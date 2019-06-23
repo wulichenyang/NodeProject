@@ -154,11 +154,11 @@ router.get('/async', function (req, res, next) {
 
 // Set cookie
 router.get('/cookie', function (req, res, next) {
-  if(req.cookies.isVisited) {
+  if(req.cookies.isVisited === true) {
     console.log(req.cookies)
     res.send('很高兴再次见到你！')
   } else {
-    res.cookie('isVisited', true, {maxAge: 60 * 1000}) // Expire in one minute
+    res.cookie('isVisited', true, {maxAge: 5 * 1000}) // Expire in one minute
     res.send('初次见面，你好！')
   }
 })
