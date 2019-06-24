@@ -17,6 +17,11 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'express' })
 });
 
+// Catch the favicon.ico request and send a 204 No Content status
+router.get('/favicon.ico', (req, res) => {
+  res.status(204)
+});
+
 // 爬虫JSON
 router.get('/topic', function (req, res, next) {
   // var q = req.query
@@ -154,11 +159,13 @@ router.get('/async', function (req, res, next) {
 
 // Set cookie
 router.get('/cookie', function (req, res, next) {
-  if(req.cookies.isVisited === true) {
+  if(req.cookies.isVisited) {
     console.log(req.cookies)
+    // Set header before sending data
+    res.cookie('isVisited', 1, {maxAge: 10 * 1000}) // Expire in 10 seconds
     res.send('很高兴再次见到你！')
   } else {
-    res.cookie('isVisited', true, {maxAge: 5 * 1000}) // Expire in one minute
+    res.cookie('isVisited', 1, {maxAge: 10 * 1000}) // Expire in 10 seconds
     res.send('初次见面，你好！')
   }
 })
