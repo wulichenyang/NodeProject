@@ -8,7 +8,7 @@
     "serve": "node server-compiled.js"
   },
   "dependencies": {
-    "async": "^3.0.1",
+    "async": "^3.2.2",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.19.0",
